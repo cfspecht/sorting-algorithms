@@ -6,24 +6,53 @@ Spring 2019
 Due Friday, May 17th
 """
 
-def bubble_sort(alist):
+def bubble_sort(alist): # TESTED, works
     """ Sorts integers using bubble sort, takes n passes
     Author: Chris Specht
     Args:
-        alist (list):
+        alist (list): unsorted list of integers
+    Returns:
+        int: number of comparisons
     """
-    for sortedlist in range(len(alist) - 1, 0, -1): # always takes n passes
-        for i in range(len(sortedlist)):
+    comparisons = 0
+    for sortedList in range(len(alist) - 1, 0, -1): # always takes n passes
+        for i in range(sortedList):
             if alist[i] > alist[i + 1]:
                 alist[i], alist[i + 1] = alist[i + 1], alist[i]
-    return alist
+                comparisons += 1
+    return comparisons
+
+
+ints = [3, 2, 1, 4, 5]
+print("Number of comparisons: " + str(bubble_sort(ints)))
+print(ints)
 
 
 def bubble_sort2(alist):
-    """
+    """ Sorts integers using bubble sort, stops immediately once sorted
     Author: Chris Specht
+    Args:
+        alist (list): unsorted list of integers
+    Returns:
+        int: number of comparisons
     """
-    pass
+    comparisons = 0
+    isSorted = False
+    while not isSorted:
+        for sortedList in range(len(alist) - 1, 0, -1): # always takes n passes
+            isSorted = True # will remain true if no swaps are made
+            for i in range(sortedList):
+                if alist[i] > alist[i + 1]:
+                    alist[i], alist[i + 1] = alist[i + 1], alist[i]
+                    isSorted = False
+                    comparisons += 1
+    return comparisons
+
+
+ints = [3, 2, 1, 4, 5]
+print("Number of comparisons: " + str(bubble_sort2(ints)))
+print(ints)
+
 
 
 def insertion_sort(alist):
