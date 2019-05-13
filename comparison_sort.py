@@ -17,7 +17,6 @@ def insertion_sort(alist):
     """
     Author: Koichi Kodama
     """
-    pass
 
 
 def selection_sort(alist):
