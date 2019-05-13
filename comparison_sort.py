@@ -17,6 +17,18 @@ def insertion_sort(alist):
     """
     Author: Koichi Kodama
     """
+    for x in range(len(alist)):
+        insertion_helper(alist, x)
+
+
+def insertion_helper(alist, start):
+    x = alist[start]
+    z = start
+    while z > 0 and alist[z - 1] > x:
+        alist[z] = alist[z - 1]
+        z -= 1
+    alist[z] = x
+    return alist
 
 
 def selection_sort(alist):
