@@ -27,20 +27,20 @@ def bubble_sort2(alist):
 
 
 def insertion_sort(alist):
-    """
-    Author: Koichi Kodama
+    """Sorts a list through Insertion sort
+    
+    Args:
+        alist (list): List to be sorted through
+    Returns:
+        alist (list): Sorted List
     """
     for x in range(len(alist)):
-        insertion_helper(alist, x)
-
-
-def insertion_helper(alist, start):
-    x = alist[start]
-    z = start
-    while z > 0 and alist[z - 1] > x:
-        alist[z] = alist[z - 1]
-        z -= 1
-    alist[z] = x
+        insert = alist[x]
+        iterate = x
+        while iterate > 0 and alist[iterate - 1] > x:
+            alist[iterate] = alist[iterate - 1]
+            iterate -= 1
+        alist[iterate] = insert
     return alist
 
 
