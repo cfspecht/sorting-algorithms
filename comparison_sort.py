@@ -8,31 +8,46 @@ Due Friday, May 17th
 
 def bubble_sort(alist):
     """
+    Author: Chris Specht
     """
     pass
 
 
 def insertion_sort(alist):
+    """
+    Author: Koichi Kodama
+    """
     pass
 
 
 def selection_sort(alist):
+    """
+    Authors:
+        Chris Specht
+        Koichi Kodama
+    """
+
     pass
 
 
 def quick_sort(alist):
     """
-    Koichi Kodama
+    Author: Koichi Kodama
     """
     pass
 
 
 def merge_sort(alist):
     """
-    Chris Specht
+    Author: Chris Specht
     """
     pass
 
 
 def heap_sort(alist):
+    """
+    Authors:
+        Chris Specht
+        Koichi Kodama
+    """
     pass
