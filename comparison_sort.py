@@ -7,6 +7,8 @@ Due Friday, May 17th
 """
 
 def bubble_sort(alist):
+    """
+    """
     pass
 
 
@@ -19,10 +21,16 @@ def selection_sort(alist):
 
 
 def quick_sort(alist):
+    """
+    Koichi Kodama
+    """
     pass
 
 
 def merge_sort(alist):
+    """
+    Chris Specht
+    """
     pass
 
 
