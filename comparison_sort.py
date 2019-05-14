@@ -86,7 +86,7 @@ def selection_sort(alist):
     pass
 
 
-def partition(arr,low,high): 
+def quick(arr,low,high): 
     i = ( low-1 ) 
     pivot = arr[high] 
   
@@ -103,7 +103,7 @@ def quickSort(arr,low,high):
     Author: Koichi Kodama
     """
     if low < high:
-        pi = partition(arr,low,high) 
+        pi = quick(arr,low,high) 
         quickSort(arr, low, pi-1) 
         quickSort(arr, pi+1, high)
 
