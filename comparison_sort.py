@@ -19,7 +19,7 @@ def bubble_sort(alist): # TESTED, works
         for i in range(sortedList):
             if alist[i] > alist[i + 1]:
                 alist[i], alist[i + 1] = alist[i + 1], alist[i]
-                comparisons += 1
+            comparisons += 1
     return comparisons
 
 # ints = [3, 2, 1, 4, 5]
@@ -44,7 +44,7 @@ def bubble_sort2(alist): # TESTED, works
                 if alist[i] > alist[i + 1]:
                     alist[i], alist[i + 1] = alist[i + 1], alist[i]
                     isSorted = False
-                    comparisons += 1
+                comparisons += 1
     return comparisons
 
 # ints = [3, 2, 1, 4, 5]
@@ -52,7 +52,6 @@ def bubble_sort2(alist): # TESTED, works
 # print(ints)
 
 
-# TODO add comparison counter
 def insertion_sort(alist):
     """Sorts a list through Insertion sort
     Author: Koichi Kodama
@@ -131,8 +130,10 @@ def merge_sort(alist, comparisons=None): # TESTED, works
     Author: Chris Specht
     Args:
         alist (list): list of unsorted integers
+        comparisons (NoneType/int): counts total number of comparisons
     Returns:
-        int: number of comparisons 
+        list: [0] sorted list
+        int: [1] number of comparisons 
     """
     # base case, one or zero elements in list
     if len(alist) <= 1:
@@ -180,7 +181,7 @@ def merge(left, right, comparisons): # TESTED, works
 
 
 def heap_sort(alist):
-    """
+    """ Sorts list of integers using heap sort
     Authors:
         Chris Specht
         Koichi Kodama
