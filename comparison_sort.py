@@ -87,26 +87,28 @@ def selection_sort(alist):
     pass
 
 
-def quick(arr,low,high): 
-    i = ( low-1 ) 
+def quick(arr, low, high, comparison): 
+    i = (low - 1) 
     pivot = arr[high] 
-  
+
     for j in range(low , high):
-        if   arr[j] <= pivot: 
-            i = i+1 
-            arr[i],arr[j] = arr[j],arr[i] 
-    arr[i+1],arr[high] = arr[high],arr[i+1] 
-    return ( i+1 ) 
+        if arr[j] <= pivot: 
+            i = i + 1 
+            arr[i], arr[j] = arr[j], arr[i] 
+    arr[i+1], arr[high] = arr[high], arr[i+1] 
+    return i + 1 
 
 
-def quickSort(arr,low,high):
+def quickSort(arr, low, high, comparison = None):
     """
     Author: Koichi Kodama
     """
+    if comparison == None:
+        comparison = 0
     if low < high:
-        pi = quick(arr,low,high) 
-        quickSort(arr, low, pi-1) 
-        quickSort(arr, pi+1, high)
+        pi = quick(arr, low, high, comparison) 
+        quickSort(arr, low, pi - 1, comparison) 
+        quickSort(arr, pi + 1, high comparison)
 
 
 def merge_sort(alist, comparisons=None): # TESTED, works
