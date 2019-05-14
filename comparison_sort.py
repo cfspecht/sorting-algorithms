@@ -52,10 +52,10 @@ def bubble_sort2(alist): # TESTED, works
 # print(ints)
 
 
+# TODO add comparison counter
 def insertion_sort(alist):
     """Sorts a list through Insertion sort
-    Author: 
-        Koichi Kodama
+    Author: Koichi Kodama
     Args:
         alist (list): List to be sorted through
     Returns:
@@ -108,8 +108,7 @@ def quickSort(arr,low,high):
         quickSort(arr, pi+1, high)
 
 
-# TODO add comparison counter to this once toshi answers question
-def merge_sort(alist): # TESTED, works
+def merge_sort(alist, comparisons=None): # TESTED, works
     """ Sorts list of integers using merge sort
     Author: Chris Specht
     Args:
@@ -119,16 +118,15 @@ def merge_sort(alist): # TESTED, works
     """
     # base case, one or zero elements in list
     if len(alist) <= 1:
-        return alist
+        return (alist, 0)
     # calculate midpoint, recursively call with left and right halves
     midpoint = len(alist) // 2
-    left = merge_sort(alist[:midpoint])
-    right = merge_sort(alist[midpoint:])
-    return merge(left, right)
+    left = merge_sort(alist[:midpoint], comparisons)
+    right = merge_sort(alist[midpoint:], comparisons)
+    return merge(left[0], right[0], left[1] + right[1])
 
 
-# TODO add comparison counter to this once toshi answers question
-def merge(left, right): # TESTED, works
+def merge(left, right, comparisons): # TESTED, works
     """ Merges two sorted lists
     Author: Chris Specht
     Args:
@@ -136,9 +134,12 @@ def merge(left, right): # TESTED, works
         right (list): righthand list
     Returns:
         list: merged list
+        int: number of comparisons
     """
     a_idx, b_idx = 0, 0
     merged = []
+    if not comparisons:
+        comparisons = 0
     # while both left and right are not empty
     while a_idx < len(left) and b_idx < len(right):
         # if value on left is <= value on right, add left value to list
@@ -149,13 +150,15 @@ def merge(left, right): # TESTED, works
         else:
             merged.append(right[b_idx])
             b_idx += 1
+        comparisons += 1
     # add rest of unused list right to merged
     if a_idx == len(left):
         merged.extend(right[b_idx:])
     # add rest of unused list left to merged
     else:
         merged.extend(left[a_idx:])
-    return merged
+    # return merged, comparisons
+    return merged, comparisons
 
 
 def heap_sort(alist):
