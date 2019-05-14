@@ -11,17 +11,6 @@ import random
 import time
 
 
-# # Creates random list of 10 integers
-# random.seed(1) #in order to generate the same sequence of numbers each time.
-# alist = random.sample(range(10000),10)
-
-# # Times a sorting algorithm
-# start_time = time.time()
-# #Now call sort function (.sort())
-# end_time = time.time()
-# sort_time = end_time – start_time
-
-
 def bubble_sort(alist): # TESTED, works
     """ Sorts integers using bubble sort, takes n passes
     Author: Chris Specht
@@ -206,6 +195,17 @@ def heap_sort(alist):
 
 
 def main():
+
+    # # Creates random list of 10 integers
+    # random.seed(1) #in order to generate the same sequence of numbers each time.
+    # alist = random.sample(range(10000),10)
+
+    # # Times a sorting algorithm
+    # start_time = time.time()
+    # #Now call sort function (.sort())
+    # end_time = time.time()
+    # sort_time = end_time – start_time
+
     pass
 
 
