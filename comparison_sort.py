@@ -27,10 +27,6 @@ def bubble_sort(alist): # TESTED, works
             comparisons += 1
     return comparisons
 
-# ints = [3, 2, 1, 4, 5]
-# print("Number of comparisons: " + str(bubble_sort(ints)))
-# print(ints)
-
 
 def bubble_sort2(alist): # TESTED, works
     """ Sorts integers using bubble sort, stops immediately once sorted
@@ -51,10 +47,6 @@ def bubble_sort2(alist): # TESTED, works
                     isSorted = False
                 comparisons += 1
     return comparisons
-
-# ints = [3, 2, 1, 4, 5]
-# print("Number of comparisons: " + str(bubble_sort2(ints)))
-# print(ints)
 
 
 def insertion_sort(alist):
