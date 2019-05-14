@@ -52,9 +52,10 @@ def bubble_sort2(alist): # TESTED, works
 # print(ints)
 
 
+# TODO add comparison counter
 def insertion_sort(alist):
     """Sorts a list through Insertion sort
-    
+    Author: Koichi Kodama
     Args:
         alist (list): List to be sorted through
     Returns:
