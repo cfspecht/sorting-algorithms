@@ -22,13 +22,12 @@ def bubble_sort(alist): # TESTED, works
                 comparisons += 1
     return comparisons
 
+# ints = [3, 2, 1, 4, 5]
+# print("Number of comparisons: " + str(bubble_sort(ints)))
+# print(ints)
 
-ints = [3, 2, 1, 4, 5]
-print("Number of comparisons: " + str(bubble_sort(ints)))
-print(ints)
 
-
-def bubble_sort2(alist):
+def bubble_sort2(alist): # TESTED, works
     """ Sorts integers using bubble sort, stops immediately once sorted
     Author: Chris Specht
     Args:
@@ -48,11 +47,9 @@ def bubble_sort2(alist):
                     comparisons += 1
     return comparisons
 
-
-ints = [3, 2, 1, 4, 5]
-print("Number of comparisons: " + str(bubble_sort2(ints)))
-print(ints)
-
+# ints = [3, 2, 1, 4, 5]
+# print("Number of comparisons: " + str(bubble_sort2(ints)))
+# print(ints)
 
 
 def insertion_sort(alist):
@@ -76,12 +73,15 @@ def insertion_sort(alist):
 
 
 def selection_sort(alist):
-    """
+    """ Sorts list of integers using selection sort
     Authors:
         Chris Specht
         Koichi Kodama
+    Args:
+        alist (list): list of unsorted integers
+    Returns:
+        int: number of comparisons
     """
-
     pass
 
 
@@ -92,11 +92,54 @@ def quick_sort(alist):
     pass
 
 
-def merge_sort(alist):
-    """
+# TODO add comparison counter to this once toshi answers question
+def merge_sort(alist): # TESTED, works
+    """ Sorts list of integers using merge sort
     Author: Chris Specht
+    Args:
+        alist (list): list of unsorted integers
+    Returns:
+        int: number of comparisons 
     """
-    pass
+    # base case, one or zero elements in list
+    if len(alist) <= 1:
+        return alist
+    # calculate midpoint, recursively call with left and right halves
+    midpoint = len(alist) // 2
+    left = merge_sort(alist[:midpoint])
+    right = merge_sort(alist[midpoint:])
+    return merge(left, right)
+
+
+# TODO add comparison counter to this once toshi answers question
+def merge(left, right): # TESTED, works
+    """ Merges two sorted lists
+    Author: Chris Specht
+    Args:
+        left (list): lefthand list
+        right (list): righthand list
+    Returns:
+        list: merged list
+    """
+    a_idx, b_idx = 0, 0
+    merged = []
+    # while both left and right are not empty
+    while a_idx < len(left) and b_idx < len(right):
+        # if value on left is <= value on right, add left value to list
+        if left[a_idx] <= right[b_idx]:
+            merged.append(left[a_idx])
+            a_idx += 1
+        # if value on left is > value on right, add right value to list
+        else:
+            merged.append(right[b_idx])
+            b_idx += 1
+    # add rest of unused list right to merged
+    if a_idx == len(left):
+        merged.extend(right[b_idx:])
+    # add rest of unused list left to merged
+    else:
+        merged.extend(left[a_idx:])
+    return merged
 
 
 def heap_sort(alist):
