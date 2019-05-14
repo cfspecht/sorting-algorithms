@@ -61,14 +61,16 @@ def insertion_sort(alist):
     Returns:
         alist (list): Sorted List
     """
+    comparisons = 0
     for x in range(len(alist)):
         insert = alist[x]
         iterate = x
         while iterate > 0 and alist[iterate - 1] > x:
             alist[iterate] = alist[iterate - 1]
             iterate -= 1
+            comparisons += 1
         alist[iterate] = insert
-    return alist
+    return comparisons 
 
 
 def selection_sort(alist):
