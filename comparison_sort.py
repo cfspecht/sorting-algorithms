@@ -90,7 +90,7 @@ def selection_sort(alist):
         # Find the minimum element in remaining  
         # unsorted array 
         min_idx = i 
-        for j in range(i+1, len(alist)):
+        for j in range(i + 1, len(alist)):
             comparison += 1 
             if alist[min_idx] > alist[j]: 
                 min_idx = j 
@@ -122,7 +122,7 @@ def quickSort(arr, low, high, comparison = None):
     if low < high:
         pi = quick(arr, low, high, comparison)
         quickSort(arr, low, pi - 1, comparison) 
-        quickSort(arr, pi + 1, high comparison)
+        quickSort(arr, pi + 1, high, comparison)
     return 
 
 
