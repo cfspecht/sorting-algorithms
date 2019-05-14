@@ -70,6 +70,7 @@ def insertion_sort(alist):
             iterate -= 1
             comparisons += 1
         alist[iterate] = insert
+        comparison += 1
     return comparisons 
 
 
