@@ -84,37 +84,41 @@ def selection_sort(alist):
     for i in range(len(alist)):  
         min_idx = i 
         for j in range(i + 1, len(alist)):
-            comparison += 1 
             if alist[min_idx] > alist[j]: 
-                min_idx = j     
+                min_idx = j 
+            comparison += 1     
         alist[i], alist[min_idx] = alist[min_idx], alist[i]
     return comparison
 
 
-def quick(arr, low, high, comparison): 
-    i = (low - 1) 
-    pivot = arr[high] 
+def _partition(mylist, start, end):
+    count = 0
+    pos = start
+    for i in range(start, end):
+        count += 1
+        if mylist[i] < mylist[end]:
+            mylist[i], mylist[pos] = mylist[pos], mylist[i]
+            pos += 1
+    mylist[pos], mylist[end] = mylist[end], mylist[pos]
+    return pos, count
 
-    for j in range(low , high):
-        if arr[j] <= pivot: 
-            i = i + 1 
-            arr[i], arr[j] = arr[j], arr[i] 
-    arr[i+1], arr[high] = arr[high], arr[i+1] 
-    return i + 1, comparison
+
+def _quicksort(mylist, start, end):
+    count = 0
+    if start < end:
+        pos, count = _partition(mylist, start, end)        
+        count += _quicksort(mylist, start, pos - 1)
+        count += _quicksort(mylist, pos + 1, end)
+    return count
 
 
-def quickSort(arr, low, high, comparison = None):
-    """
-    Author: Koichi Kodama
-    """
-    if comparison == None:
-        comparison = 0
-    if low < high:
-        pi = quick(arr, low, high, comparison)
-        quickSort(arr, low, pi - 1, comparison) 
-        quickSort(arr, pi + 1, high, comparison)
-    return 
-    
+def quicksort(mylist, start=None, end=None):
+    if start is None:
+        start = 0
+    if end is None:
+        end = len(mylist) - 1
+    return _quicksort(mylist, start, end)
+
 
 def merge_sort(alist, comparisons=None): # TESTED, works
     """ Sorts list of integers using merge sort
