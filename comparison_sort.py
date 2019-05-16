@@ -281,26 +281,19 @@ def main():
     # end_time = time.time()
     # sort_time = end_time – start_time
 
+    # alist = random.sample(range(500001), 16000) # second argument is number of items in random list created
+    # start_time = time.time()
+    # comparisons = bubble_sort(alist) # this is where the sorting algorithm goes
+
     # bubble_sort
     random.seed(1)
-<<<<<<< HEAD
     alist = random.sample(range(500001), 1000)
     start_time = time.time()
     comparisons = insertion_sort(alist)
-=======
-    alist = random.sample(range(500001), 16000) # second argument is number of items in random list created
-    start_time = time.time()
-    comparisons = bubble_sort(alist) # this is where the sorting algorithm goes
->>>>>>> 00f673f2e893f6fbb38de5c4884abd58027784c9
     end_time = time.time()
     sort_time = end_time - start_time
     print("Bubble sort comparisons: " + str(comparisons))
     print("Bubble sort time: " + str(sort_time))
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 00f673f2e893f6fbb38de5c4884abd58027784c9
 
     # ints = [1, 4, 3, 2]
     # shift_down(ints, 0, 4)
