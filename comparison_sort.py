@@ -62,7 +62,7 @@ def insertion_sort(alist):
     Returns:
         alist (list): Sorted List
     """
-    comparisons = 0
+      comparisons = 0
     for x in range(len(alist)):
         insert = alist[x]
         iterate = x
@@ -281,15 +281,15 @@ def main():
     # end_time = time.time()
     # sort_time = end_time – start_time
 
-    # # bubble_sort
-    # random.seed(1)
-    # alist = random.sample(range(500001), 16000)
-    # start_time = time.time()
-    # comparisons = bubble_sort(alist)
-    # end_time = time.time()
-    # sort_time = end_time - start_time
-    # print("Bubble sort comparisons: " + str(comparisons))
-    # print("Bubble sort time: " + str(sort_time))
+    # bubble_sort
+    random.seed(1)
+    alist = random.sample(range(500001), 1000)
+    start_time = time.time()
+    comparisons = insertion_sort(alist)
+    end_time = time.time()
+    sort_time = end_time - start_time
+    print("Bubble sort comparisons: " + str(comparisons))
+    print("Bubble sort time: " + str(sort_time))
 
 
 
