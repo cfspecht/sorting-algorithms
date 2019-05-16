@@ -54,6 +54,7 @@ def bubble_sort2(alist): # TESTED, works
     return comparisons
 
 
+# TODO check comparison counter
 def insertion_sort(alist):
     """Sorts a list through Insertion sort
     Author: Koichi Kodama
@@ -62,7 +63,7 @@ def insertion_sort(alist):
     Returns:
         alist (list): Sorted List
     """
-      comparisons = 0
+    comparisons = 0
     for x in range(len(alist)):
         insert = alist[x]
         iterate = x
