@@ -92,6 +92,9 @@ def selection_sort(alist):
 
 
 def _partition(mylist, start, end):
+    """
+    Author: Koichi Kodama
+    """
     count = 0
     pos = start
     for i in range(start, end):
@@ -104,6 +107,9 @@ def _partition(mylist, start, end):
 
 
 def _quicksort(mylist, start, end):
+    """
+    Author: Koichi Kodama
+    """
     count = 0
     if start < end:
         pos, count = _partition(mylist, start, end)        
@@ -113,6 +119,9 @@ def _quicksort(mylist, start, end):
 
 
 def quicksort(mylist, start=None, end=None):
+    """
+    Author: Koichi Kodama
+    """
     if start is None:
         start = 0
     if end is None:
