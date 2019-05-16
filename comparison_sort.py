@@ -81,18 +81,12 @@ def selection_sort(alist):
         int: number of comparisons
     """
     comparison = 0
-    for i in range(len(alist)): 
-    
-        # Find the minimum element in remaining  
-        # unsorted array 
+    for i in range(len(alist)):  
         min_idx = i 
         for j in range(i + 1, len(alist)):
             comparison += 1 
             if alist[min_idx] > alist[j]: 
-                min_idx = j 
-                
-        # Swap the found minimum element with  
-        # the first element         
+                min_idx = j     
         alist[i], alist[min_idx] = alist[min_idx], alist[i]
     return comparison
 
@@ -120,7 +114,7 @@ def quickSort(arr, low, high, comparison = None):
         quickSort(arr, low, pi - 1, comparison) 
         quickSort(arr, pi + 1, high, comparison)
     return 
-
+    
 
 def merge_sort(alist, comparisons=None): # TESTED, works
     """ Sorts list of integers using merge sort
