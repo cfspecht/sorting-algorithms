@@ -10,6 +10,11 @@ Due Friday, May 17th
 import random
 import time
 
+# IMPORTANT NOTE
+
+    # nohup ... &
+    # ^ for running on server
+
 
 def bubble_sort(alist): # TESTED, works
     """ Sorts integers using bubble sort, takes n passes
@@ -182,8 +187,79 @@ def heap_sort(alist):
     Authors:
         Chris Specht
         Koichi Kodama
+    Args:
+        alist (list): list of integers to be sorted
+    Returns:
+        int: number of comparisons
     """
-    pass
+    # build max heap from list, alist is now a heap
+    comparisons = max_heapify(alist)
+
+    # growing the sorted sublist at end
+    for i in range (len(alist) - 1, 0, -1):
+
+        # switch first and last value
+        alist[i], alist[0] = alist[0], alist[i]
+        # properly order modified heap
+        comparisons += shift_down(alist, 0, i)
+
+    return comparisons
+
+
+def max_heapify(alist):
+    """ Heapifies an unsorted list
+    Args:
+        alist (list): list to be heapified
+    Returns:
+        int: number of comparisons
+    """
+    # initialize comparisons
+    comparisons = 0
+
+    # get parent of last item, shift down
+    size = len(alist)
+
+    # call shift_down on every index, starting from the end
+    for i in range(size, -1, -1):
+        comparisons += shift_down(alist, i, size)
+
+    return comparisons
+
+
+def shift_down(heap, i, size, comparisons=None):
+    """ Shifts newly added item at top of heap to its proper place
+    Args:
+        heap (list): heap to be modified
+        i (int): root index of current call of function
+        size (int): size of the heap (actual size, not index)
+    Returns:
+        int: number of comparisons
+    """
+    if not comparisons:
+        comparisons = 0
+
+    # calculate indices of root, left, and right children of current root
+    root_index = i
+    left_index = 2 * i + 1
+    right_index = 2 * i + 2
+
+    # get index of minimum child, choosing the larger child
+    if left_index < size and heap[left_index] > heap[root_index]:
+        root_index = left_index # shifts pointer down
+    if right_index < size and heap[right_index] > heap[root_index]:
+        root_index = right_index # shifts pointer down
+
+    comparisons += 2
+
+    # if root index has changed, swap values
+    if root_index != i:
+        heap[root_index], heap[i] = heap[i], heap[root_index]
+        comparisons += 1
+        # recursive call on subheap
+        comparisons += shift_down(heap, root_index, size, comparisons)
+
+    # base case is if current node has no children or node is in correct place
+    return comparisons
 
 
 def main():
@@ -198,7 +274,35 @@ def main():
     # end_time = time.time()
     # sort_time = end_time – start_time
 
-    pass
+    # # bubble_sort
+    # random.seed(1)
+    # alist = random.sample(range(500001), 16000)
+    # start_time = time.time()
+    # comparisons = bubble_sort(alist)
+    # end_time = time.time()
+    # sort_time = end_time - start_time
+    # print("Bubble sort comparisons: " + str(comparisons))
+    # print("Bubble sort time: " + str(sort_time))
+
+
+
+    # ints = [1, 4, 3, 2]
+    # shift_down(ints, 0, 4)
+    # print(ints)
+
+    # ints = [5, 3, 7, 8, 11]
+    # comparisons = max_heapify(ints)
+    # print(ints)
+    # print(comparisons)
+
+    # ints = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    # max_heapify(ints)
+    # print(ints)
+
+    ints = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+    comparisons = heap_sort(ints)
+    print(ints)
+    print(comparisons)
 
 
 if __name__ == "__main__":
