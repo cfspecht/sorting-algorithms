@@ -286,15 +286,163 @@ def main():
     # start_time = time.time()
     # comparisons = bubble_sort(alist) # this is where the sorting algorithm goes
 
-    # bubble_sort
-    random.seed(1)
-    alist = random.sample(range(500001), 1000)
-    start_time = time.time()
-    comparisons = insertion_sort(alist)
-    end_time = time.time()
-    sort_time = end_time - start_time
-    print("Bubble sort comparisons: " + str(comparisons))
-    print("Bubble sort time: " + str(sort_time))
+    # # bubble_sort
+    # random.seed(1)
+    # alist = random.sample(range(500001), 1000)
+    # start_time = time.time()
+    # comparisons = insertion_sort(alist)
+    # end_time = time.time()
+    # sort_time = end_time - start_time
+    # print("Bubble sort comparisons: " + str(comparisons))
+    # print("Bubble sort time: " + str(sort_time))
+
+
+    # # full list sizes
+    # list_sizes = [1000, 2000, 4000, 8000, 16000, 32000, 100000, 500000]
+
+    # # hard, time-consuming ones
+    # list_sizes = [32000, 100000, 500000]
+
+    # easy, short ones
+    list_sizes = [1000, 2000, 4000, 8000, 16000]
+
+    # BUBBLE SORT
+    # iterate through each list size
+    for list_size in list_sizes:
+        random.seed(1)
+        alist = random.sample(range(500001), list_size)
+        start_time = time.time()
+        comparisons = bubble_sort(alist)
+        end_time = time.time()
+        sort_time = end_time - start_time
+        print("Bubble sort (unsorted), size: %s, comparisons: %s" % (list_size, comparisons))
+        print("Bubble sort (unsorted), size: %s, time: %s" % (list_size, sort_time))
+        
+        start_time = time.time()
+        comparisons = bubble_sort(alist)
+        end_time = time.time()
+        sort_time = end_time - start_time
+        print("Bubble sort (sorted), size: %s, comparisons: %s" % (list_size, comparisons))
+        print("Bubble sort (sorted), size: %s, time: %s" % (list_size, sort_time))
+        print()
+
+
+    print("=" * 30)
+    print()
+
+    # BUBBLE SORT 2
+    # iterate through each list size
+    for list_size in list_sizes:
+        random.seed(1)
+        alist = random.sample(range(500001), list_size)
+        start_time = time.time()
+        comparisons = bubble_sort2(alist)
+        end_time = time.time()
+        sort_time = end_time - start_time
+        print("Bubble sort 2 (unsorted), size: %s, comparisons: %s" % (list_size, comparisons))
+        print("Bubble sort 2 (unsorted), size: %s, time: %s" % (list_size, sort_time))
+        
+        start_time = time.time()
+        comparisons = bubble_sort2(alist)
+        end_time = time.time()
+        sort_time = end_time - start_time
+        print("Bubble sort 2 (sorted), size: %s, comparisons: %s" % (list_size, comparisons))
+        print("Bubble sort 2 (sorted), size: %s, time: %s" % (list_size, sort_time))
+        print()
+
+    print("=" * 30)
+    print()
+
+    """
+    # INSERTION SORT
+    # iterate through each list size
+    for list_size in list_sizes:
+        random.seed(1)
+        alist = random.sample(range(500001), list_size)
+        start_time = time.time()
+        comparisons = insertion_sort(alist)
+        end_time = time.time()
+        sort_time = end_time - start_time
+        print("Insertion sort (unsorted), size: %s, comparisons: %s" % (list_size, comparisons))
+        print("Insertion sort (unsorted), size: %s, time: %s" % (list_size, sort_time))
+        
+        start_time = time.time()
+        comparisons = insertion_sort(alist)
+        end_time = time.time()
+        sort_time = end_time - start_time
+        print("Insertion sort (sorted), size: %s, comparisons: %s" % (list_size, comparisons))
+        print("Insertion sort (sorted), size: %s, time: %s" % (list_size, sort_time))
+    """
+
+    print("=" * 30)
+    print()
+    
+    # SELECTION SORT
+    # iterate through each list size
+    for list_size in list_sizes:
+        random.seed(1)
+        alist = random.sample(range(500001), list_size)
+        start_time = time.time()
+        comparisons = selection_sort(alist)
+        end_time = time.time()
+        sort_time = end_time - start_time
+        print("Selection sort (unsorted), size: %s, comparisons: %s" % (list_size, comparisons))
+        print("Selection sort (unsorted), size: %s, time: %s" % (list_size, sort_time))
+        
+        start_time = time.time()
+        comparisons = selection_sort(alist)
+        end_time = time.time()
+        sort_time = end_time - start_time
+        print("Selection sort (sorted), size: %s, comparisons: %s" % (list_size, comparisons))
+        print("Selection sort (sorted), size: %s, time: %s" % (list_size, sort_time))
+        print()
+
+    print("=" * 30)
+    print()
+
+    # TODO recursion error reached
+    # QUICK SORT
+    # iterate through each list size
+    for list_size in list_sizes:
+        random.seed(1)
+        alist = random.sample(range(500001), list_size)
+        start_time = time.time()
+        comparisons = quicksort(alist)
+        end_time = time.time()
+        sort_time = end_time - start_time
+        print("Quick sort (unsorted), size: %s, comparisons: %s" % (list_size, comparisons))
+        print("Quick sort (unsorted), size: %s, time: %s" % (list_size, sort_time))
+        start_time = time.time()
+        comparisons = quicksort(alist)
+        end_time = time.time()
+        sort_time = end_time - start_time
+        print("Quick sort (sorted), size: %s, comparisons: %s" % (list_size, comparisons))
+        print("Quick sort (sorted), size: %s, time: %s" % (list_size, sort_time))
+        print()
+
+    print("=" * 30)
+    print()
+
+    # MERGE SORT
+    # iterate through each list size
+    for list_size in list_sizes:
+        random.seed(1)
+        alist = random.sample(range(500001), list_size)
+        start_time = time.time()
+        comparisons = merge_sort(alist)
+        end_time = time.time()
+        sort_time = end_time - start_time
+        print("Merge sort (unsorted), size: %s, comparisons: %s" % (list_size, comparisons))
+        print("Merge sort (unsorted), size: %s, time: %s" % (list_size, sort_time))
+        
+        start_time = time.time()
+        comparisons = merge_sort(alist)
+        end_time = time.time()
+        sort_time = end_time - start_time
+        print("Merge sort (sorted), size: %s, comparisons: %s" % (list_size, comparisons))
+        print("Merge sort (sorted), size: %s, time: %s" % (list_size, sort_time))
+        print()
+
 
     # ints = [1, 4, 3, 2]
     # shift_down(ints, 0, 4)
@@ -309,11 +457,11 @@ def main():
     # max_heapify(ints)
     # print(ints)
 
-    ints = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
-    comparisons = heap_sort(ints)
-    print(ints)
-    print(comparisons)
+    # ints = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+    # comparisons = heap_sort(ints)
+    # print(ints)
+    # print(comparisons)
 
 
 if __name__ == "__main__":
-    main()
+    main() 
