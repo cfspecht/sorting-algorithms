@@ -102,12 +102,12 @@ def selection_sort(alist):
     return comparison
 
 
-def partition(arr,low,high): 
+def partition(arr,low,high, comparisons): 
     i = ( low-1 )         # index of smaller element 
     pivot = arr[high]     # pivot 
   
-    for j in range(low , high): 
-  
+    for j in range(low , high):
+        comparisons += 1
         # If current element is smaller than or 
         # equal to pivot 
         if   arr[j] <= pivot: 
@@ -117,7 +117,7 @@ def partition(arr,low,high):
             arr[i],arr[j] = arr[j],arr[i] 
   
     arr[i+1],arr[high] = arr[high],arr[i+1] 
-    return ( i+1 ) 
+    return ( i+1 , comparisons) 
   
 # The main function that implements QuickSort 
 # arr[] --> Array to be sorted, 
@@ -125,17 +125,21 @@ def partition(arr,low,high):
 # high  --> Ending index 
   
 # Function to do Quick sort 
-def quickSort(arr,low,high): 
-    if low < high: 
-  
-        # pi is partitioning index, arr[p] is now 
-        # at right place 
-        pi = partition(arr,low,high) 
-  
-        # Separately sort elements before 
-        # partition and after partition 
-        quickSort(arr, low, pi-1) 
-        quickSort(arr, pi+1, high) 
+def quickSort(arr, low, high, comparisons = None):
+    if comparisons == None:
+        comparisons = 0
+    if low < high:
+    
+        # pi is partitioning index, arr[p] is now
+        # at right place
+        pi = partition(arr,low,high, comparisons)
+
+        # Separately sort elements before
+        # partition and after partition
+        lower = quickSort(arr, low, pi[0]-1, pi[1])
+        higher = quickSort(arr, pi[0]+1, high, pi[1])
+        comparisons = comparisons + higher + lower
+    return comparisons
 
 
 def merge_sort(alist, comparisons=None): # TESTED, works
