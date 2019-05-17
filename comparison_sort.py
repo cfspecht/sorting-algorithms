@@ -305,15 +305,6 @@ def main():
     # start_time = time.time()
     # comparisons = bubble_sort(alist) # this is where the sorting algorithm goes
 
-    # # bubble_sort
-    # random.seed(1)
-    # alist = random.sample(range(500001), 1000)
-    # start_time = time.time()
-    # comparisons = insertion_sort(alist)
-    # end_time = time.time()
-    # sort_time = end_time - start_time
-    # print("Bubble sort comparisons: " + str(comparisons))
-    # print("Bubble sort time: " + str(sort_time))
 
 
 
