@@ -54,7 +54,6 @@ def bubble_sort2(alist): # TESTED, works
     return comparisons
 
 
-# TODO check comparison counter
 def insertion_sort(alist):
     """Sorts a list through Insertion sort
     Author: Koichi Kodama
@@ -304,6 +303,11 @@ def main():
     # print("Bubble sort time: " + str(sort_time))
 
 
+
+# =================================================================================================
+
+    # it will always generate same list, so it doesn't all have to run at once
+
     # # full list sizes
     # list_sizes = [1000, 2000, 4000, 8000, 16000, 32000, 100000, 500000]
 
@@ -414,13 +418,13 @@ def main():
         random.seed(1)
         alist = random.sample(range(500001), list_size)
         start_time = time.time()
-        comparisons = quicksort(alist)
+        comparisons = quickSort(alist)
         end_time = time.time()
         sort_time = end_time - start_time
         print("Quick sort (unsorted), size: %s, comparisons: %s" % (list_size, comparisons))
         print("Quick sort (unsorted), size: %s, time: %s" % (list_size, sort_time))
         start_time = time.time()
-        comparisons = quicksort(alist)
+        comparisons = quickSort(alist)
         end_time = time.time()
         sort_time = end_time - start_time
         print("Quick sort (sorted), size: %s, comparisons: %s" % (list_size, comparisons))
