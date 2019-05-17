@@ -307,6 +307,7 @@ def main():
 # =================================================================================================
 
     # it will always generate same list, so it doesn't all have to run at once
+    # we should run n^2 last
 
     # # full list sizes
     # list_sizes = [1000, 2000, 4000, 8000, 16000, 32000, 100000, 500000]
@@ -337,7 +338,7 @@ def main():
         print("Bubble sort (sorted), size: %s, time: %s" % (list_size, sort_time))
         print()
 
-
+    print()
     print("=" * 30)
     print()
 
@@ -361,6 +362,7 @@ def main():
         print("Bubble sort 2 (sorted), size: %s, time: %s" % (list_size, sort_time))
         print()
 
+    print()
     print("=" * 30)
     print()
 
@@ -384,7 +386,7 @@ def main():
         print("Insertion sort (sorted), size: %s, comparisons: %s" % (list_size, comparisons))
         print("Insertion sort (sorted), size: %s, time: %s" % (list_size, sort_time))
     
-
+    print()
     print("=" * 30)
     print()
     
@@ -408,6 +410,7 @@ def main():
         print("Selection sort (sorted), size: %s, time: %s" % (list_size, sort_time))
         print()
 
+    print()
     print("=" * 30)
     print()
 
@@ -431,6 +434,7 @@ def main():
         print("Quick sort (sorted), size: %s, time: %s" % (list_size, sort_time))
         print()
 
+    print()
     print("=" * 30)
     print()
 
