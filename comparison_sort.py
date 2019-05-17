@@ -382,7 +382,6 @@ def main():
     print("=" * 30)
     print()
 
-    
     # INSERTION SORT
     # iterate through each list size
     for list_size in list_sizes:
@@ -405,7 +404,7 @@ def main():
     print()
     print("=" * 30)
     print()
-    
+
     # SELECTION SORT
     # iterate through each list size
     for list_size in list_sizes:
