@@ -427,7 +427,6 @@ def main():
     print("=" * 30)
     print()
 
-    # TODO recursion error reached
     # QUICK SORT
     # iterate through each list size
     for list_size in list_sizes:
@@ -469,6 +468,26 @@ def main():
         sort_time = end_time - start_time
         print("Merge sort (sorted), size: %s, comparisons: %s" % (list_size, comparisons))
         print("Merge sort (sorted), size: %s, time: %s" % (list_size, sort_time))
+        print()
+
+    # HEAP SORT
+    # iterate through each list size
+    for list_size in list_sizes:
+        random.seed(1)
+        alist = random.sample(range(500001), list_size)
+        start_time = time.time()
+        comparisons = heap_sort(alist)
+        end_time = time.time()
+        sort_time = end_time - start_time
+        print("Heap sort (unsorted), size: %s, comparisons: %s" % (list_size, comparisons))
+        print("Heap sort (unsorted), size: %s, time: %s" % (list_size, sort_time))
+        
+        start_time = time.time()
+        comparisons = heap_sort(alist)
+        end_time = time.time()
+        sort_time = end_time - start_time
+        print("Heap sort (sorted), size: %s, comparisons: %s" % (list_size, comparisons))
+        print("Heap sort (sorted), size: %s, time: %s" % (list_size, sort_time))
         print()
 
 
