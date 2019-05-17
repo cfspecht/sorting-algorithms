@@ -8,8 +8,8 @@ Due Friday, May 17th
 
 
 import unittest
-from comparison_sort import bubble_sort, bubble_sort2, insertion_sort, selection_sort, quick, \
-                            quickSort, merge_sort, merge, heap_sort, heapify
+from comparison_sort import bubble_sort, bubble_sort2, insertion_sort, selection_sort, quick_sort, \
+                            merge_sort, merge, heap_sort, max_heapify
 
 
 class TestCase(unittest.TestCase):
@@ -22,6 +22,11 @@ class TestCase(unittest.TestCase):
     def test_bubble_sort2(self):
         ints = [5, 4, 3, 2, 1]
         bubble_sort2(ints)
+        self.assertEqual(ints, [1, 2, 3, 4, 5])
+        
+    def test_quick_sort(self):
+        ints = [5, 4, 3, 2, 1]
+        quick_sort(ints)
         self.assertEqual(ints, [1, 2, 3, 4, 5])
 
     def test_merge_sort(self):

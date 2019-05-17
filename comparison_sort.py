@@ -101,43 +101,56 @@ def selection_sort(alist):
     return comparison
 
 
-def partition(arr,low,high, comparisons): 
-    i = ( low-1 )         # index of smaller element 
-    pivot = arr[high]     # pivot 
-  
-    for j in range(low , high):
-        comparisons += 1
-        # If current element is smaller than or 
-        # equal to pivot 
-        if   arr[j] <= pivot: 
-          
-            # increment index of smaller element 
-            i = i+1 
-            arr[i],arr[j] = arr[j],arr[i] 
-  
-    arr[i+1],arr[high] = arr[high],arr[i+1] 
-    return ( i+1 , comparisons) 
-  
-# The main function that implements QuickSort 
-# arr[] --> Array to be sorted, 
-# low  --> Starting index, 
-# high  --> Ending index 
-  
-# Function to do Quick sort 
-def quickSort(arr, low, high, comparisons = None):
-    if comparisons == None:
-        comparisons = 0
-    if low < high:
-    
-        # pi is partitioning index, arr[p] is now
-        # at right place
-        pi = partition(arr,low,high, comparisons)
+def quick_sort(array, start=0, end=None, comparisons=None):
 
-        # Separately sort elements before
-        # partition and after partition
-        lower = quickSort(arr, low, pi[0]-1, pi[1])
-        higher = quickSort(arr, pi[0]+1, high, pi[1])
-        comparisons = comparisons + higher + lower
+    # for very first call of function
+    if end is None:
+        end = len(array) - 1
+    if not comparisons:
+        comparisons = 0
+
+    size = (end - start) + 1
+    midpoint = (start + end) // 2
+
+    # if size > 1, if list is longer than 1 element
+    if size > 1:
+        
+        # set pivot to mid point value
+        pivot = array[midpoint]
+
+        # swap the start and midpoint values
+        array[start], array[midpoint] = array[midpoint], array[start]
+
+        # set left = start + 1, right = end
+        left = start + 1
+        right = end
+
+        # while left <= right
+        while left <= right:
+
+            # increment left while left <= end and its value < pivot
+            while left <= end and array[left] < pivot:
+                left += 1
+                comparisons += 1
+
+            # increment right while right > start and its value >= pivot
+            while right > start and array[right] >= pivot:
+                right -= 1
+                comparisons += 1
+
+            # if left index < right index
+            if left < right:
+                # swap values
+                array[left], array[right] = array[right], array[left]
+        
+        # swap pivot value and right value back
+        # puts pivot value back in original place
+        array[start], array[right] = array[right], array[start]
+
+        # recursive call on each half
+        comparisons += quick_sort(array, start, right - 1, comparisons)
+        comparisons += quick_sort(array, right + 1, end, comparisons)
+    
     return comparisons
 
 
@@ -421,13 +434,13 @@ def main():
         random.seed(1)
         alist = random.sample(range(500001), list_size)
         start_time = time.time()
-        comparisons = quickSort(alist, 0, len(alist) - 1)
+        comparisons = quick_sort(alist)
         end_time = time.time()
         sort_time = end_time - start_time
         print("Quick sort (unsorted), size: %s, comparisons: %s" % (list_size, comparisons))
         print("Quick sort (unsorted), size: %s, time: %s" % (list_size, sort_time))
         start_time = time.time()
-        comparisons = quickSort(alist, 0, len(alist) - 1)
+        comparisons = quick_sort(alist)
         end_time = time.time()
         sort_time = end_time - start_time
         print("Quick sort (sorted), size: %s, comparisons: %s" % (list_size, comparisons))
