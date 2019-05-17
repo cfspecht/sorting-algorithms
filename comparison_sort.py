@@ -103,7 +103,18 @@ def selection_sort(alist):
 
 
 def quick_sort(array, start=0, end=None, comparisons=None):
-
+    """ Sorts integers using quick sort
+    Authors:
+        Chris Specht
+        Koichi Kodama
+    Args:
+        array (list): unsorted integers
+        start (int): starting index of current call
+        end (int/NoneType): ending index of current call
+        comparisons (int/NoneType): number of comparisons
+    Returns:
+        comparisons (int/NoneType): number of comparisons
+    """
     # for very first call of function
     if end is None:
         end = len(array) - 1
