@@ -462,14 +462,14 @@ def main():
         comparisons = merge_sort(alist)
         end_time = time.time()
         sort_time = end_time - start_time
-        print("Merge sort (unsorted), size: %s, comparisons: %s" % (list_size, comparisons))
+        print("Merge sort (unsorted), size: %s, comparisons: %s" % (list_size, comparisons[1]))
         print("Merge sort (unsorted), size: %s, time: %s" % (list_size, sort_time))
         
         start_time = time.time()
         comparisons = merge_sort(alist)
         end_time = time.time()
         sort_time = end_time - start_time
-        print("Merge sort (sorted), size: %s, comparisons: %s" % (list_size, comparisons))
+        print("Merge sort (sorted), size: %s, comparisons: %s" % (list_size, comparisons[1]))
         print("Merge sort (sorted), size: %s, time: %s" % (list_size, sort_time))
         print()
 
