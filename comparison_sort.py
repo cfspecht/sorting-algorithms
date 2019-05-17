@@ -62,7 +62,7 @@ def insertion_sort(alist):
     Returns:
         alist (list): Sorted List
     """
-      comparisons = 0
+    comparisons = 0
     for x in range(len(alist)):
         insert = alist[x]
         iterate = x
