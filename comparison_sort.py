@@ -64,16 +64,21 @@ def insertion_sort(alist):
         alist (list): Sorted List
     """
     comparisons = 0
-    for x in range(len(alist)):
-        insert = alist[x]
-        iterate = x
-        while iterate > 0 and alist[iterate - 1] > x:
-            alist[iterate] = alist[iterate - 1]
-            iterate -= 1
-            comparisons += 1
-        alist[iterate] = insert
-        comparison += 1
-    return comparisons 
+    # Traverse through 1 to len(alist) 
+    for i in range(1, len(alist)): 
+  
+        key = alist[i] 
+  
+        # Move elements of alist[0..i-1], that are 
+        # greater than key, to one position ahead 
+        # of their current position 
+        j = i-1
+        while j >= 0 and key < alist[j] : 
+                alist[j + 1] = alist[j] 
+                j -= 1
+                comparisons += 1
+        alist[j + 1] = key
+    return comparisons
 
 
 def selection_sort(alist):
@@ -353,7 +358,7 @@ def main():
     print("=" * 30)
     print()
 
-    """
+    
     # INSERTION SORT
     # iterate through each list size
     for list_size in list_sizes:
@@ -372,7 +377,7 @@ def main():
         sort_time = end_time - start_time
         print("Insertion sort (sorted), size: %s, comparisons: %s" % (list_size, comparisons))
         print("Insertion sort (sorted), size: %s, time: %s" % (list_size, sort_time))
-    """
+    
 
     print("=" * 30)
     print()
