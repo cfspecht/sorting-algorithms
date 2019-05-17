@@ -102,42 +102,40 @@ def selection_sort(alist):
     return comparison
 
 
-def _partition(mylist, start, end):
-    """
-    Author: Koichi Kodama
-    """
-    count = 0
-    pos = start
-    for i in range(start, end):
-        count += 1
-        if mylist[i] < mylist[end]:
-            mylist[i], mylist[pos] = mylist[pos], mylist[i]
-            pos += 1
-    mylist[pos], mylist[end] = mylist[end], mylist[pos]
-    return pos, count
-
-
-def _quicksort(mylist, start, end):
-    """
-    Author: Koichi Kodama
-    """
-    count = 0
-    if start < end:
-        pos, count = _partition(mylist, start, end)        
-        count += _quicksort(mylist, start, pos - 1)
-        count += _quicksort(mylist, pos + 1, end)
-    return count
-
-
-def quicksort(mylist, start=None, end=None):
-    """
-    Author: Koichi Kodama
-    """
-    if start is None:
-        start = 0
-    if end is None:
-        end = len(mylist) - 1
-    return _quicksort(mylist, start, end)
+def partition(arr,low,high): 
+    i = ( low-1 )         # index of smaller element 
+    pivot = arr[high]     # pivot 
+  
+    for j in range(low , high): 
+  
+        # If current element is smaller than or 
+        # equal to pivot 
+        if   arr[j] <= pivot: 
+          
+            # increment index of smaller element 
+            i = i+1 
+            arr[i],arr[j] = arr[j],arr[i] 
+  
+    arr[i+1],arr[high] = arr[high],arr[i+1] 
+    return ( i+1 ) 
+  
+# The main function that implements QuickSort 
+# arr[] --> Array to be sorted, 
+# low  --> Starting index, 
+# high  --> Ending index 
+  
+# Function to do Quick sort 
+def quickSort(arr,low,high): 
+    if low < high: 
+  
+        # pi is partitioning index, arr[p] is now 
+        # at right place 
+        pi = partition(arr,low,high) 
+  
+        # Separately sort elements before 
+        # partition and after partition 
+        quickSort(arr, low, pi-1) 
+        quickSort(arr, pi+1, high) 
 
 
 def merge_sort(alist, comparisons=None): # TESTED, works
