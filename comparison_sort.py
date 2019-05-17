@@ -418,13 +418,13 @@ def main():
         random.seed(1)
         alist = random.sample(range(500001), list_size)
         start_time = time.time()
-        comparisons = quickSort(alist)
+        comparisons = quickSort(alist, 0, len(alist) - 1)
         end_time = time.time()
         sort_time = end_time - start_time
         print("Quick sort (unsorted), size: %s, comparisons: %s" % (list_size, comparisons))
         print("Quick sort (unsorted), size: %s, time: %s" % (list_size, sort_time))
         start_time = time.time()
-        comparisons = quickSort(alist)
+        comparisons = quickSort(alist, 0, len(alist) - 1)
         end_time = time.time()
         sort_time = end_time - start_time
         print("Quick sort (sorted), size: %s, comparisons: %s" % (list_size, comparisons))
