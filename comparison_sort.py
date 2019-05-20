@@ -66,6 +66,7 @@ def insertion_sort(alist):
     comparisons = 0
     # Traverse through 1 to len(alist) 
     for i in range(1, len(alist)): 
+        comparisons += 1
   
         key = alist[i] 
   
@@ -329,10 +330,10 @@ def main():
     # list_sizes = [1000, 2000, 4000, 8000, 16000, 32000, 100000, 500000]
 
     # # hard, time-consuming ones
-    # list_sizes = [32000, 100000, 500000]
+    list_sizes = [32000, 100000, 500000]
 
     # easy, short ones
-    list_sizes = [1000, 2000, 4000, 8000, 16000]
+    #list_sizes = [1000, 2000, 4000, 8000, 16000]
 
     # BUBBLE SORT
     # iterate through each list size
@@ -400,6 +401,7 @@ def main():
         sort_time = end_time - start_time
         print("Insertion sort (sorted), size: %s, comparisons: %s" % (list_size, comparisons))
         print("Insertion sort (sorted), size: %s, time: %s" % (list_size, sort_time))
+        print()
     
     print()
     print("=" * 30)
@@ -440,6 +442,7 @@ def main():
         sort_time = end_time - start_time
         print("Quick sort (unsorted), size: %s, comparisons: %s" % (list_size, comparisons))
         print("Quick sort (unsorted), size: %s, time: %s" % (list_size, sort_time))
+
         start_time = time.time()
         comparisons = quick_sort(alist)
         end_time = time.time()
@@ -471,6 +474,10 @@ def main():
         print("Merge sort (sorted), size: %s, comparisons: %s" % (list_size, comparisons[1]))
         print("Merge sort (sorted), size: %s, time: %s" % (list_size, sort_time))
         print()
+
+    print()
+    print("=" * 30)
+    print()
 
     # HEAP SORT
     # iterate through each list size
