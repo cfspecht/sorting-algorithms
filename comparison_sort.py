@@ -103,6 +103,7 @@ def selection_sort(alist):
     return comparison
 
 
+counter = 0
 def quick_sort(array, start=0, end=None, comparisons=None):
     """ Sorts integers using quick sort
     Authors:
@@ -116,6 +117,7 @@ def quick_sort(array, start=0, end=None, comparisons=None):
     Returns:
         comparisons (int/NoneType): number of comparisons
     """
+    global counter
     # for very first call of function
     if end is None:
         end = len(array) - 1
@@ -144,12 +146,12 @@ def quick_sort(array, start=0, end=None, comparisons=None):
             # increment left while left <= end and its value < pivot
             while left <= end and array[left] < pivot:
                 left += 1
-                comparisons += 1
+                counter += 1
 
             # increment right while right > start and its value >= pivot
             while right > start and array[right] >= pivot:
                 right -= 1
-                comparisons += 1
+                counter += 1
 
             # if left index < right index
             if left < right:
@@ -161,10 +163,10 @@ def quick_sort(array, start=0, end=None, comparisons=None):
         array[start], array[right] = array[right], array[start]
 
         # recursive call on each half
-        comparisons += quick_sort(array, start, right - 1, comparisons)
-        comparisons += quick_sort(array, right + 1, end, comparisons)
+        quick_sort(array, start, right - 1, comparisons)
+        quick_sort(array, right + 1, end, comparisons)
     
-    return comparisons
+    return counter
 
 
 def merge_sort(alist, comparisons=None): # TESTED, works
@@ -304,36 +306,8 @@ def shift_down(heap, i, size, comparisons=None):
 
 def main():
 
-    # # Creates random list of 10 integers
-    # random.seed(1) #in order to generate the same sequence of numbers each time.
-    # alist = random.sample(range(10000),10)
-
-    # # Times a sorting algorithm
-    # start_time = time.time()
-    # #Now call sort function (.sort())
-    # end_time = time.time()
-    # sort_time = end_time – start_time
-
-    # alist = random.sample(range(500001), 16000) # second argument is number of items in random list created
-    # start_time = time.time()
-    # comparisons = bubble_sort(alist) # this is where the sorting algorithm goes
-
-
-
-
-# =================================================================================================
-
-    # it will always generate same list, so it doesn't all have to run at once
-    # we should run n^2 last
-
-    # # full list sizes
-    # list_sizes = [1000, 2000, 4000, 8000, 16000, 32000, 100000, 500000]
-
-    # # hard, time-consuming ones
-    list_sizes = [32000, 100000, 500000]
-
-    # easy, short ones
-    #list_sizes = [1000, 2000, 4000, 8000, 16000]
+    # full list sizes
+    list_sizes = [1000, 2000, 4000, 8000, 16000, 32000, 100000, 500000]
 
     # BUBBLE SORT
     # iterate through each list size
@@ -434,6 +408,9 @@ def main():
     # QUICK SORT
     # iterate through each list size
     for list_size in list_sizes:
+
+        counter = 0
+
         random.seed(1)
         alist = random.sample(range(500001), list_size)
         start_time = time.time()
@@ -442,6 +419,9 @@ def main():
         sort_time = end_time - start_time
         print("Quick sort (unsorted), size: %s, comparisons: %s" % (list_size, comparisons))
         print("Quick sort (unsorted), size: %s, time: %s" % (list_size, sort_time))
+        # print(counter)
+
+        counter = 0
 
         start_time = time.time()
         comparisons = quick_sort(alist)
@@ -449,6 +429,7 @@ def main():
         sort_time = end_time - start_time
         print("Quick sort (sorted), size: %s, comparisons: %s" % (list_size, comparisons))
         print("Quick sort (sorted), size: %s, time: %s" % (list_size, sort_time))
+        # print(counter)       
         print()
 
     print()
@@ -499,24 +480,23 @@ def main():
         print("Heap sort (sorted), size: %s, time: %s" % (list_size, sort_time))
         print()
 
-
-    # ints = [1, 4, 3, 2]
-    # shift_down(ints, 0, 4)
-    # print(ints)
-
-    # ints = [5, 3, 7, 8, 11]
-    # comparisons = max_heapify(ints)
-    # print(ints)
-    # print(comparisons)
-
-    # ints = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    # max_heapify(ints)
-    # print(ints)
-
-    # ints = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
-    # comparisons = heap_sort(ints)
-    # print(ints)
-    # print(comparisons)
+    # TIM SORT
+    # iterate through each list size
+    for list_size in list_sizes:
+        random.seed(1)
+        alist = random.sample(range(500001), list_size)
+        start_time = time.time()
+        alist.sort()
+        end_time = time.time()
+        sort_time = end_time - start_time
+        print("Tim sort (unsorted), size: %s, time: %s" % (list_size, sort_time))
+        
+        start_time = time.time()
+        alist.sort()
+        end_time = time.time()
+        sort_time = end_time - start_time
+        print("Tim sort (sorted), size: %s, time: %s" % (list_size, sort_time))
+        print()
 
 
 if __name__ == "__main__":
