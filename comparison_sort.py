@@ -419,7 +419,6 @@ def main():
         sort_time = end_time - start_time
         print("Quick sort (unsorted), size: %s, comparisons: %s" % (list_size, comparisons))
         print("Quick sort (unsorted), size: %s, time: %s" % (list_size, sort_time))
-        # print(counter)
 
         counter = 0
 
@@ -429,7 +428,6 @@ def main():
         sort_time = end_time - start_time
         print("Quick sort (sorted), size: %s, comparisons: %s" % (list_size, comparisons))
         print("Quick sort (sorted), size: %s, time: %s" % (list_size, sort_time))
-        # print(counter)       
         print()
 
     print()
