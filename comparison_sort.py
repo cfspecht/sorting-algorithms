@@ -11,12 +11,6 @@ import random
 import time
 
 
-# IMPORTANT NOTE
-
-    # nohup ... &
-    # ^ for running on server
-
-
 def bubble_sort(alist): # TESTED, works
     """ Sorts integers using bubble sort, takes n passes
     Author: Chris Specht
@@ -26,8 +20,8 @@ def bubble_sort(alist): # TESTED, works
         int: number of comparisons
     """
     comparisons = 0
-    for sortedList in range(len(alist) - 1, 0, -1): # always takes n passes
-        for i in range(sortedList):
+    for sorted_list in range(len(alist) - 1, 0, -1): # always takes n passes
+        for i in range(sorted_list):
             if alist[i] > alist[i + 1]:
                 alist[i], alist[i + 1] = alist[i + 1], alist[i]
             comparisons += 1
@@ -43,14 +37,14 @@ def bubble_sort2(alist): # TESTED, works
         int: number of comparisons
     """
     comparisons = 0
-    isSorted = False
-    while not isSorted:
+    is_sorted = False
+    while not is_sorted:
         for sortedList in range(len(alist) - 1, 0, -1): # always takes n passes
-            isSorted = True # will remain true if no swaps are made
+            is_sorted = True # will remain true if no swaps are made
             for i in range(sortedList):
                 if alist[i] > alist[i + 1]:
                     alist[i], alist[i + 1] = alist[i + 1], alist[i]
-                    isSorted = False
+                    is_sorted = False
                 comparisons += 1
     return comparisons
 
@@ -64,20 +58,20 @@ def insertion_sort(alist):
         alist (list): Sorted List
     """
     comparisons = 0
-    # Traverse through 1 to len(alist) 
-    for i in range(1, len(alist)): 
+    # Traverse through 1 to len(alist)
+    for i in range(1, len(alist)):
         comparisons += 1
-  
-        key = alist[i] 
-  
-        # Move elements of alist[0..i-1], that are 
-        # greater than key, to one position ahead 
-        # of their current position 
+
+        key = alist[i]
+
+        # Move elements of alist[0..i-1], that are
+        # greater than key, to one position ahead
+        # of their current position
         j = i-1
-        while j >= 0 and key < alist[j] : 
-                alist[j + 1] = alist[j] 
-                j -= 1
-                comparisons += 1
+        while j >= 0 and key < alist[j]:
+            alist[j + 1] = alist[j]
+            j -= 1
+            comparisons += 1
         alist[j + 1] = key
     return comparisons
 
@@ -93,12 +87,12 @@ def selection_sort(alist):
         int: number of comparisons
     """
     comparison = 0
-    for i in range(len(alist)):  
-        min_idx = i 
+    for i in range(len(alist)):
+        min_idx = i
         for j in range(i + 1, len(alist)):
-            if alist[min_idx] > alist[j]: 
-                min_idx = j 
-            comparison += 1     
+            if alist[min_idx] > alist[j]:
+                min_idx = j
+            comparison += 1
         alist[i], alist[min_idx] = alist[min_idx], alist[i]
     return comparison
 
@@ -129,7 +123,7 @@ def quick_sort(array, start=0, end=None, comparisons=None):
 
     # if size > 1, if list is longer than 1 element
     if size > 1:
-        
+
         # set pivot to mid point value
         pivot = array[midpoint]
 
@@ -157,7 +151,7 @@ def quick_sort(array, start=0, end=None, comparisons=None):
             if left < right:
                 # swap values
                 array[left], array[right] = array[right], array[left]
-        
+
         # swap pivot value and right value back
         # puts pivot value back in original place
         array[start], array[right] = array[right], array[start]
@@ -165,7 +159,7 @@ def quick_sort(array, start=0, end=None, comparisons=None):
         # recursive call on each half
         quick_sort(array, start, right - 1, comparisons)
         quick_sort(array, right + 1, end, comparisons)
-    
+
     return counter
 
 
@@ -177,7 +171,7 @@ def merge_sort(alist, comparisons=None): # TESTED, works
         comparisons (NoneType/int): counts total number of comparisons
     Returns:
         list: [0] sorted list
-        int: [1] number of comparisons 
+        int: [1] number of comparisons
     """
     # base case, one or zero elements in list
     if len(alist) <= 1:
@@ -238,7 +232,7 @@ def heap_sort(alist):
     comparisons = max_heapify(alist)
 
     # growing the sorted sublist at end
-    for i in range (len(alist) - 1, 0, -1):
+    for i in range(len(alist) - 1, 0, -1):
 
         # switch first and last value
         alist[i], alist[0] = alist[0], alist[i]
@@ -305,12 +299,13 @@ def shift_down(heap, i, size, comparisons=None):
 
 
 def main():
+    """ Runs test with all list sizes for all functions
+    """
 
     # full list sizes
     list_sizes = [1000, 2000, 4000, 8000, 16000, 32000, 100000, 500000]
 
     # BUBBLE SORT
-    # iterate through each list size
     for list_size in list_sizes:
         random.seed(1)
         alist = random.sample(range(500001), list_size)
@@ -320,7 +315,7 @@ def main():
         sort_time = end_time - start_time
         print("Bubble sort (unsorted), size: %s, comparisons: %s" % (list_size, comparisons))
         print("Bubble sort (unsorted), size: %s, time: %s" % (list_size, sort_time))
-        
+
         start_time = time.time()
         comparisons = bubble_sort(alist)
         end_time = time.time()
@@ -334,7 +329,6 @@ def main():
     print()
 
     # BUBBLE SORT 2
-    # iterate through each list size
     for list_size in list_sizes:
         random.seed(1)
         alist = random.sample(range(500001), list_size)
@@ -344,7 +338,7 @@ def main():
         sort_time = end_time - start_time
         print("Bubble sort 2 (unsorted), size: %s, comparisons: %s" % (list_size, comparisons))
         print("Bubble sort 2 (unsorted), size: %s, time: %s" % (list_size, sort_time))
-        
+
         start_time = time.time()
         comparisons = bubble_sort2(alist)
         end_time = time.time()
@@ -358,7 +352,6 @@ def main():
     print()
 
     # INSERTION SORT
-    # iterate through each list size
     for list_size in list_sizes:
         random.seed(1)
         alist = random.sample(range(500001), list_size)
@@ -368,7 +361,7 @@ def main():
         sort_time = end_time - start_time
         print("Insertion sort (unsorted), size: %s, comparisons: %s" % (list_size, comparisons))
         print("Insertion sort (unsorted), size: %s, time: %s" % (list_size, sort_time))
-        
+
         start_time = time.time()
         comparisons = insertion_sort(alist)
         end_time = time.time()
@@ -376,13 +369,12 @@ def main():
         print("Insertion sort (sorted), size: %s, comparisons: %s" % (list_size, comparisons))
         print("Insertion sort (sorted), size: %s, time: %s" % (list_size, sort_time))
         print()
-    
+
     print()
     print("=" * 30)
     print()
 
     # SELECTION SORT
-    # iterate through each list size
     for list_size in list_sizes:
         random.seed(1)
         alist = random.sample(range(500001), list_size)
@@ -392,7 +384,7 @@ def main():
         sort_time = end_time - start_time
         print("Selection sort (unsorted), size: %s, comparisons: %s" % (list_size, comparisons))
         print("Selection sort (unsorted), size: %s, time: %s" % (list_size, sort_time))
-        
+
         start_time = time.time()
         comparisons = selection_sort(alist)
         end_time = time.time()
@@ -406,11 +398,7 @@ def main():
     print()
 
     # QUICK SORT
-    # iterate through each list size
     for list_size in list_sizes:
-
-        counter = 0
-
         random.seed(1)
         alist = random.sample(range(500001), list_size)
         start_time = time.time()
@@ -419,8 +407,6 @@ def main():
         sort_time = end_time - start_time
         print("Quick sort (unsorted), size: %s, comparisons: %s" % (list_size, comparisons))
         print("Quick sort (unsorted), size: %s, time: %s" % (list_size, sort_time))
-
-        counter = 0
 
         start_time = time.time()
         comparisons = quick_sort(alist)
@@ -435,7 +421,6 @@ def main():
     print()
 
     # MERGE SORT
-    # iterate through each list size
     for list_size in list_sizes:
         random.seed(1)
         alist = random.sample(range(500001), list_size)
@@ -445,7 +430,7 @@ def main():
         sort_time = end_time - start_time
         print("Merge sort (unsorted), size: %s, comparisons: %s" % (list_size, comparisons[1]))
         print("Merge sort (unsorted), size: %s, time: %s" % (list_size, sort_time))
-        
+
         start_time = time.time()
         comparisons = merge_sort(alist)
         end_time = time.time()
@@ -459,7 +444,6 @@ def main():
     print()
 
     # HEAP SORT
-    # iterate through each list size
     for list_size in list_sizes:
         random.seed(1)
         alist = random.sample(range(500001), list_size)
@@ -469,7 +453,7 @@ def main():
         sort_time = end_time - start_time
         print("Heap sort (unsorted), size: %s, comparisons: %s" % (list_size, comparisons))
         print("Heap sort (unsorted), size: %s, time: %s" % (list_size, sort_time))
-        
+
         start_time = time.time()
         comparisons = heap_sort(alist)
         end_time = time.time()
@@ -479,7 +463,6 @@ def main():
         print()
 
     # TIM SORT
-    # iterate through each list size
     for list_size in list_sizes:
         random.seed(1)
         alist = random.sample(range(500001), list_size)
@@ -488,7 +471,7 @@ def main():
         end_time = time.time()
         sort_time = end_time - start_time
         print("Tim sort (unsorted), size: %s, time: %s" % (list_size, sort_time))
-        
+
         start_time = time.time()
         alist.sort()
         end_time = time.time()
@@ -498,4 +481,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main() 
+    main()
