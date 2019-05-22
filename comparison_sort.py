@@ -37,15 +37,15 @@ def bubble_sort2(alist): # TESTED, works
         int: number of comparisons
     """
     comparisons = 0
-    is_sorted = False
-    while not is_sorted:
-        for sorted_list in range(len(alist) - 1, 0, -1): # always takes n passes
-            is_sorted = True # will remain true if no swaps are made
-            for i in range(sorted_list):
-                if alist[i] > alist[i + 1]:
-                    alist[i], alist[i + 1] = alist[i + 1], alist[i]
-                    is_sorted = False
-                comparisons += 1
+    for sorted_list in range(len(alist) - 1, 0, -1): # one pass through the list
+        is_sorted = True # will remain true if no swaps are made
+        for i in range(sorted_list):
+            if alist[i] > alist[i + 1]:
+                alist[i], alist[i + 1] = alist[i + 1], alist[i]
+                is_sorted = False
+            comparisons += 1
+        if is_sorted:
+            return comparisons
     return comparisons
 
 
