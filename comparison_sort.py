@@ -39,9 +39,9 @@ def bubble_sort2(alist): # TESTED, works
     comparisons = 0
     is_sorted = False
     while not is_sorted:
-        for sortedList in range(len(alist) - 1, 0, -1): # always takes n passes
+        for sorted_list in range(len(alist) - 1, 0, -1): # always takes n passes
             is_sorted = True # will remain true if no swaps are made
-            for i in range(sortedList):
+            for i in range(sorted_list):
                 if alist[i] > alist[i + 1]:
                     alist[i], alist[i + 1] = alist[i + 1], alist[i]
                     is_sorted = False
@@ -97,7 +97,7 @@ def selection_sort(alist):
     return comparison
 
 
-counter = 0
+Counter = 0
 def quick_sort(array, start=0, end=None, comparisons=None):
     """ Sorts integers using quick sort
     Authors:
@@ -111,7 +111,7 @@ def quick_sort(array, start=0, end=None, comparisons=None):
     Returns:
         comparisons (int/NoneType): number of comparisons
     """
-    global counter
+    global Counter
     # for very first call of function
     if end is None:
         end = len(array) - 1
@@ -140,12 +140,12 @@ def quick_sort(array, start=0, end=None, comparisons=None):
             # increment left while left <= end and its value < pivot
             while left <= end and array[left] < pivot:
                 left += 1
-                counter += 1
+                Counter += 1
 
             # increment right while right > start and its value >= pivot
             while right > start and array[right] >= pivot:
                 right -= 1
-                counter += 1
+                Counter += 1
 
             # if left index < right index
             if left < right:
@@ -160,7 +160,7 @@ def quick_sort(array, start=0, end=None, comparisons=None):
         quick_sort(array, start, right - 1, comparisons)
         quick_sort(array, right + 1, end, comparisons)
 
-    return counter
+    return Counter
 
 
 def merge_sort(alist, comparisons=None): # TESTED, works
